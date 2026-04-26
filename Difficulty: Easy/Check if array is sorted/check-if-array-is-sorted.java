@@ -5,7 +5,7 @@ class Solution {
 //             else return true;
 //         }
 //         else if(arr.length == 1) return true;
-        
+
 //         int idx = 1;
 //         return sortedArr(arr,idx);
 //     }
@@ -15,6 +15,7 @@ class Solution {
 //         return sortedArr(arr,idx+1);
 //     }
 // }
+
 
 
 // class Solution {
@@ -28,6 +29,7 @@ class Solution {
 //         return true;
 //     }
 // }
+
 
 // class Solution {
 //     public boolean isSorted(int[] arr) {
@@ -46,7 +48,7 @@ class Solution {
     }
     return true;
 
-
+//Done
 
 
 
