@@ -1,35 +1,34 @@
 class Solution {
-    public int aggressiveCows(int[] arr, int k) {
-        Arrays.sort(arr);
-        int n = arr.length;
-        int low = 1;
-        int high = arr[n-1] - arr[0];
+    public int aggressiveCows(int[] stalls, int k) {
+        Arrays.sort(stalls);
+        int n = stalls.length;
+        int low = 1; int high = stalls[n-1] - stalls[0];
         int res = -1;
         while(low<=high){
-            int mid = low+(high-low)/2;
+            int guess = low+(high-low)/2;
             
-            boolean dist = maxDist(arr,mid,k);
-            if(dist){
-                res = mid;
-                low = mid+1;
+            boolean isPlaced = helperFun(stalls,guess,k);
+            
+            if(isPlaced){
+                res = guess;
+                low = guess+1;
             }else{
-                high = mid-1;
+                high = guess-1;
             }
         }
         return res;
     }
-    private static boolean maxDist(int[] arr, int mid, int k){
-        int cow = 1;
-        int pos = arr[0];
-        for(int i=1; i<arr.length; i++){
-            int dist = arr[i] - pos;
-            if(dist < mid) continue;
-            
-            cow++;
-            pos = arr[i];
+    
+    private static boolean helperFun(int[] stalls, int guess, int k){
+        int cows = 1;
+        int prev = stalls[0];
+        for(int i=1; i<stalls.length; i++){
+            if(stalls[i] - prev >= guess){
+                cows++; 
+                prev = stalls[i];
+            }
+            if(cows >= k) return true;
         }
-        if(cow >= k) return true;
-        else return false;
-        
+        return false;
     }
 }
